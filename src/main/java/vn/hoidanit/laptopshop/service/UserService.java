@@ -6,33 +6,37 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import vn.hoidanit.laptopshop.domain.User;
-import vn.hoidanit.laptopshop.domain.dto.createUserDto;
+import vn.hoidanit.laptopshop.domain.dto.CreateUserDto;
+import vn.hoidanit.laptopshop.exception.AppException;
+import vn.hoidanit.laptopshop.exception.ErrorCode;
+import vn.hoidanit.laptopshop.mapper.UserMapper;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
     }
 
     public String getUserName() {
         return "hello";
     }
 
-    public User handleSaveUser(createUserDto userDto) {
+    public User handleSaveUser(CreateUserDto userDto) {
 
-        User user = new User();
-        user.setEmail(userDto.getEmail());
-        String hassPassword = this.passwordEncoder.encode(userDto.getPassword());
-        user.setPassword(hassPassword);
-        user.setFullName(userDto.getFullName());
-        user.setAddress(userDto.getAddress());
-        user.setPhone(userDto.getPhone());
-        user.setRoleId(null);
+        boolean isExistEmail = this.userRepository.existsByEmail(userDto.getEmail());
+        if (isExistEmail) {
+            throw new AppException(ErrorCode.USER_EXISTED);
+        }
+        userDto.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
+        User user = userMapper.createToUser(userDto);
+
         return this.userRepository.save(user);
     }
 

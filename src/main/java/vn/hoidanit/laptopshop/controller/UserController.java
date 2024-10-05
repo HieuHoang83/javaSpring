@@ -2,6 +2,8 @@ package vn.hoidanit.laptopshop.controller;
 
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
@@ -10,7 +12,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import vn.hoidanit.laptopshop.domain.User;
-import vn.hoidanit.laptopshop.domain.dto.createUserDto;
+import vn.hoidanit.laptopshop.domain.dto.ApiResponseDto;
+import vn.hoidanit.laptopshop.domain.dto.CreateUserDto;
 import vn.hoidanit.laptopshop.service.UserService;
 
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,15 +35,12 @@ public class UserController {
     }
 
     @PostMapping("/user/create")
-    public User CreateUser(@RequestBody @Valid createUserDto userDto, BindingResult bindingResult) {
-        // TODO: process POST request
-        // System.out.println(bindingResult);
-        List<FieldError> errors = bindingResult.getFieldErrors();
-        for (FieldError error : errors) {
-            System.out.println(error.getField() + " - " + error.getDefaultMessage());
-        }
+    public ApiResponseDto<User> CreateUser(@RequestBody @Valid CreateUserDto userDto) {
 
-        return this.userService.handleSaveUser(userDto);
+        ApiResponseDto<User> response = new ApiResponseDto<>();
+
+        response.setResult(this.userService.handleSaveUser(userDto));
+        return response;
     }
 
     @GetMapping("/")
