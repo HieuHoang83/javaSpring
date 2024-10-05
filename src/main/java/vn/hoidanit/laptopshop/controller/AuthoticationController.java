@@ -4,8 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import vn.hoidanit.laptopshop.domain.User;
-import vn.hoidanit.laptopshop.domain.dto.ApiResponseDto;
-import vn.hoidanit.laptopshop.domain.dto.AuthoticationDto;
+import vn.hoidanit.laptopshop.dto.RequestDto.AuthoticationDto;
+import vn.hoidanit.laptopshop.dto.ResponseDto.ApiResponseDto;
+import vn.hoidanit.laptopshop.dto.ResponseDto.UserLoginDto;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 import vn.hoidanit.laptopshop.service.AuthoticationService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +24,10 @@ public class AuthoticationController {
 
     @PostMapping("/authent/login")
 
-    public ApiResponseDto<User> isAuthenticated(@RequestBody AuthoticationDto authoticationDto) {
-        ApiResponseDto<User> response = new ApiResponseDto<>();
-        User user = authenticationService.checkPassword(authoticationDto);
+    public ApiResponseDto<UserLoginDto> isAuthenticated(@RequestBody AuthoticationDto authoticationDto) {
+        ApiResponseDto<UserLoginDto> response = new ApiResponseDto<>();
+        UserLoginDto user = authenticationService.checkPassword(authoticationDto);
+
         response.setResult(user);
         return response;
     }

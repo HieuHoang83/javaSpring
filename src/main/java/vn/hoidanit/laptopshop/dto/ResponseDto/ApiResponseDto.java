@@ -1,4 +1,4 @@
-package vn.hoidanit.laptopshop.domain.dto;
+package vn.hoidanit.laptopshop.dto.ResponseDto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

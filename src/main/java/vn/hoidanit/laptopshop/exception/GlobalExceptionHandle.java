@@ -5,7 +5,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import vn.hoidanit.laptopshop.domain.dto.ApiResponseDto;
+import vn.hoidanit.laptopshop.dto.ResponseDto.ApiResponseDto;
 
 @ControllerAdvice
 public class GlobalExceptionHandle {

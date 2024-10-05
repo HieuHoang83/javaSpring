@@ -5,12 +5,9 @@ import org.mapstruct.MappingTarget;
 
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.dto.RequestDto.CreateUserDto;
+import vn.hoidanit.laptopshop.dto.ResponseDto.UserLoginDto;
 
 @Mapper(componentModel = "spring")
-public interface UserMapper {
-    User createToUser(CreateUserDto createUserDto);
-
-    void userUpdate(@MappingTarget User user, CreateUserDto createUserDto);
-
-   
+public interface LoginMapper {
+    UserLoginDto User_To_User_Login(User user);
 }

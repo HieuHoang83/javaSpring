@@ -6,7 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import vn.hoidanit.laptopshop.domain.User;
-import vn.hoidanit.laptopshop.domain.dto.CreateUserDto;
+import vn.hoidanit.laptopshop.dto.RequestDto.CreateUserDto;
 import vn.hoidanit.laptopshop.exception.AppException;
 import vn.hoidanit.laptopshop.exception.ErrorCode;
 import vn.hoidanit.laptopshop.mapper.UserMapper;

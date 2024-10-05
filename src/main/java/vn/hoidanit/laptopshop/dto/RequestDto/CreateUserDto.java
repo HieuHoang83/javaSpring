@@ -1,4 +1,4 @@
-package vn.hoidanit.laptopshop.domain.dto;
+package vn.hoidanit.laptopshop.dto.RequestDto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

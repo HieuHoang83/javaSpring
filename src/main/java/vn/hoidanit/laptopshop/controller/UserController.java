@@ -12,8 +12,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import vn.hoidanit.laptopshop.domain.User;
-import vn.hoidanit.laptopshop.domain.dto.ApiResponseDto;
-import vn.hoidanit.laptopshop.domain.dto.CreateUserDto;
+import vn.hoidanit.laptopshop.dto.RequestDto.CreateUserDto;
+import vn.hoidanit.laptopshop.dto.ResponseDto.ApiResponseDto;
 import vn.hoidanit.laptopshop.service.UserService;
 
 import org.springframework.web.bind.annotation.RequestParam;
