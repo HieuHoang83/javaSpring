@@ -3,6 +3,7 @@ package vn.hoidanit.laptopshop.service;
 import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.domain.dto.AuthoticationDto;
@@ -10,6 +11,7 @@ import vn.hoidanit.laptopshop.exception.AppException;
 import vn.hoidanit.laptopshop.exception.ErrorCode;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 
+@Service
 public class AuthoticationService {
     private UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
