@@ -7,8 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -18,11 +16,14 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String name;
     private double price;
     private String img;
+
     @Column(columnDefinition = "Text")
     private String detailDescription;
+
     private String shortDescription;
     private int quantity;
     private long sold;
@@ -32,8 +33,7 @@ public class Product {
     @OneToMany(mappedBy = "productId")
     private Set<OrderDetail> orderDetails;
 
-    public Product() {
-    }
+    public Product() {}
 
     public long getId() {
         return id;
@@ -121,5 +121,4 @@ public class Product {
                 + detailDescription + ", shortDescription=" + shortDescription + ", quantity=" + quantity + ", sold="
                 + sold + ", factory=" + factory + ", target=" + target + "]";
     }
-
 }

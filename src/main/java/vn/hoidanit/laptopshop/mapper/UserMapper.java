@@ -11,6 +11,4 @@ public interface UserMapper {
     User createToUser(CreateUserDto createUserDto);
 
     void userUpdate(@MappingTarget User user, CreateUserDto createUserDto);
-
-   
 }

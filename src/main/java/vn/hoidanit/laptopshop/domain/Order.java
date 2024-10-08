@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +24,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @DecimalMin(value = "0", inclusive = true, message = "totalPrice lớn hơn hoặc bằng 0")
     private double totalPrice;
 
@@ -32,5 +34,4 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User userId;
-
 }

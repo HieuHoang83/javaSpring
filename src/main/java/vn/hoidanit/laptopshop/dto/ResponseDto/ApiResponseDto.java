@@ -1,20 +1,14 @@
 package vn.hoidanit.laptopshop.dto.ResponseDto;
 
+import org.springframework.http.HttpStatusCode;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponseDto<T> {
-    private int code = 200;
+    private HttpStatusCode statusCode;
     private String message;
     private T result;
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
 
     public String getMessage() {
         return message;
@@ -32,4 +26,11 @@ public class ApiResponseDto<T> {
         this.result = result;
     }
 
+    public HttpStatusCode getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(HttpStatusCode statusCode) {
+        this.statusCode = statusCode;
+    }
 }

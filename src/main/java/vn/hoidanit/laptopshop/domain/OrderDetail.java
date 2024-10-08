@@ -1,7 +1,6 @@
 package vn.hoidanit.laptopshop.domain;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,9 +14,11 @@ public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private int quantity;
     private double price;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne
     @JoinColumn(name = "order_id")
     private Order orderId;
 
@@ -48,5 +49,4 @@ public class OrderDetail {
     public void setPrice(double price) {
         this.price = price;
     }
-
 }
